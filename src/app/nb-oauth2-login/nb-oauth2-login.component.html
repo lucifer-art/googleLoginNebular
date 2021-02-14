@@ -1,0 +1,33 @@
+<nb-layout>
+    <nb-layout-column>
+        <div style="width: 40%;margin: auto;">
+            <nb-card>
+                <nb-card-header *ngIf="!token">Sign In With Google</nb-card-header>
+                <nb-card-header *ngIf="token">Logged In!!!</nb-card-header>
+                <nb-card-body>
+                    <div *ngIf="token && userData">
+                        <div>
+                            <div style="display: flex;justify-content: center;">
+                                <img src="{{userData.picture}}" alt="profile picture" style="border:2px solid #000;border-radius:50%">
+                            </div>
+                            <p style="text-align: center;font-size: 18px;font-weight: bold;">Name: {{userData.name}}</p>
+                        </div>
+                        <div style="display: flex;justify-content: center;">
+                            <button nbButton status="warning" *ngIf="token" (click)="logout()">Sign Out</button>
+                        </div>
+                    </div>
+                    <div *ngIf="!token" >
+                        <div style="display: flex;justify-content: center;margin-bottom: 10px;">
+                            <nb-icon icon="person-outline" style="font-size: 10rem;border:2px solid #000;border-radius: 50%;text-align: center;"></nb-icon>
+                        </div>
+                        <div style="display: flex;justify-content: center;">
+                            <button nbButton status="success" *ngIf="!token" (click)="login()">
+                                <nb-icon icon="google-outline"></nb-icon>Sign In with Google
+                            </button>
+                        </div>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </nb-layout-column>
+</nb-layout>
